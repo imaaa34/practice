@@ -25,4 +25,12 @@ public class MutterListService {
 	public MutterList findByMutterOne() {
 		return mutterListRepository.findByMutterOne();
 	}
+	
+	public void save(Integer id, String name, String comment) {
+		MutterList mutterList = new MutterList();
+		mutterList.setId(id);
+		mutterList.setName(name);
+		mutterList.setComment(comment);
+		mutterListRepository.save(mutterList);
+	}
 }

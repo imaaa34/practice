@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import practice.entity.MutterList;
 
+// <対象Entityクラス, IDのデータ型>
 public interface MutterListRepository extends JpaRepository<MutterList, Integer> {
 	
 	public List<MutterList> findAllByOrderByIdDesc();
