@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+	integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+	crossorigin="anonymous">
+<title>つぶやき</title>
+</head>
+<body>
+<div class="login align-items-center py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-lg-8 mx-auto">
+				<h3 class="login-heading my-4">つぶやき一覧（昇順）</h3>
+				<!-- Thymeleafの繰り返し処理 -->
+				<!-- modelにusersというキーでセットされてきたリストを繰り返しで表示 -->
+				<!-- リスト（配列）のusersから1ずつ要素を取得してuser（変数）に格納 -->
+				<table class="table table-striped">
+					<!-- user（UserListクラス）のgetNameメソッドを実行して名前を画面に表示 -->
+					<tr>
+						<th>ID</th>
+						<th>名前</th>
+						<th>コメント</th>
+						<th>オプション</th>
+					</tr>
+					<tr th:each="mutter : ${mutters}">
+						<td th:text="${mutter.id}"></td>
+						<td th:text="${mutter.name}"></td>
+						<td th:text="${mutter.comment}"></td>
+						<td><a th:href="@{delete(id=${mutter.id})}">削除する</a></td>
+					</tr>
+				</table>
+				<br>
+				<h3 class="login-heading my-4">つぶやき一覧（降順）</h3>
+				<!-- Thymeleafの繰り返し処理 -->
+				<!-- modelにusersというキーでセットされてきたリストを繰り返しで表示 -->
+				<!-- リスト（配列）のusersから1ずつ要素を取得してuser（変数）に格納 -->
+				<table class="table table-striped">
+					<!-- user（UserListクラス）のgetNameメソッドを実行して名前を画面に表示 -->
+					<tr>
+						<th>ID</th>
+						<th>名前</th>
+						<th>コメント</th>
+						<th>オプション</th>
+					</tr>
+					<tr th:each="mutter : ${muttersDesc}">
+						<td th:text="${mutter.id}"></td>
+						<td th:text="${mutter.name}"></td>
+						<td th:text="${mutter.comment}"></td>
+						<td><a th:href="@{delete(id=${mutter.id})}">削除する</a></td>
+					</tr>
+				</table>
+				<br>
+				<h3 class="login-heading my-4">つぶやき一覧（ID1のみ）</h3>
+				<!-- Thymeleafの繰り返し処理 -->
+				<!-- modelにusersというキーでセットされてきたリストを繰り返しで表示 -->
+				<!-- リスト（配列）のusersから1ずつ要素を取得してuser（変数）に格納 -->
+				<table class="table table-striped">
+					<!-- user（UserListクラス）のgetNameメソッドを実行して名前を画面に表示 -->
+					<tr>
+						<th>ID</th>
+						<th>名前</th>
+						<th>コメント</th>
+						<th>オプション</th>
+					</tr>
+					<tr>
+						<td th:text="${mutterOne.id}"></td>
+						<td th:text="${mutterOne.name}"></td>
+						<td th:text="${mutterOne.comment}"></td>
+						<td><a th:href="@{delete(id=${mutterOne.id})}">削除する</a></td>
+					</tr>
+				</table>
+				<br>
+				<h3 class="login-heading my-4">つぶやき追加</h3>
+				<form action="add" method="post">
+					<div class="form-label-group">
+						<label for="name">名前</label>
+						<input type="text"
+							id="name"
+							name="name"
+							class="form-control">
+					</div>
+					<div class="form-label-group">
+						<label for="comment">コメント</label>
+						<input type="text"
+							id="comment"
+							name="comment"
+							class="form-control">
+					</div>
+					<br>
+					<button
+						class="btn btn-lg btn-primary btn-block btn-login font-weight-bold mb-2"
+						type="submit">追加</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
