@@ -39,7 +39,8 @@ public class practiceController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("delete")
+	// URLに含まれるパラメータを受け取る
+	@PostMapping("delete")
 	public String deleteMutter(@RequestParam Integer id) {
 		mutterListService.delete(id);
 		return "redirect:/";
