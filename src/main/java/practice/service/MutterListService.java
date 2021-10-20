@@ -33,4 +33,8 @@ public class MutterListService {
 		mutterList.setComment(comment);
 		mutterListRepository.save(mutterList);
 	}
+	
+	public void delete(Integer id) {
+		mutterListRepository.deleteById(id);
+	}
 }

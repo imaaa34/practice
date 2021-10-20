@@ -9,9 +9,7 @@ import practice.entity.MutterList;
 
 // <対象Entityクラス, IDのデータ型>
 public interface MutterListRepository extends JpaRepository<MutterList, Integer> {
-	
 	public List<MutterList> findAllByOrderByIdDesc();
 	@Query("select u from MutterList u where u.id = 1")
 	public MutterList findByMutterOne();
-	
 }
